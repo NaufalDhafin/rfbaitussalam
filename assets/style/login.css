@@ -1,0 +1,125 @@
+form{
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 400px;
+    width: 95%;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.137);
+}
+
+form .atas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form .atas p{
+    color: rgb(2, 189, 142);
+    font-weight: 600;
+    font-size: 21px;
+}
+form .atas img{
+    width: 100px;
+}
+
+form .text{
+    color: rgb(255, 0, 0);
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+    font-size: 14px;
+}
+
+form .inputs{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form .inputs label{
+    width: 100%;
+}
+form .inputs label p{
+    color: rgb(2, 189, 142);
+    font-size: 15px;
+}
+form .inputs label input{
+    width: 100%;
+    background: none;
+    height: 35px;
+    border: none;
+    border-bottom: 1px solid #0000003b;
+    transition: .2s;
+    padding: 0 5px;
+    color: rgb(2, 189, 142);
+    font-weight: 500;
+    border-radius: 5px;
+}
+form .inputs label input:focus,
+form .inputs label input:focus-visible,
+form .inputs label input:hover{
+    border: 1px solid rgb(2, 189, 142);
+    outline: none;
+}
+form .inputs label .term{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+form .inputs label .term input{
+    width: 20px;
+}
+
+form .inputs #link{
+    display: flex;
+    justify-content: space-between;
+    color: lightseagreen;
+    font-size: 14px;
+    font-weight: 500;
+    align-items: center;
+}
+form button{
+    width: 100%;
+    background: rgb(2, 189, 142);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 10px;
+    transition: .2s;
+    margin-top: 10px;
+}
+form button:hover{
+    background: rgb(2, 168, 127);
+}
+
+form .or{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: grey;
+}
+form .google{
+    display: flex;
+    width: 100%;
+    border: 2px solid lightseagreen;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 5px 0;
+    color: lightseagreen;
+    font-weight: 600;
+    transition: .2s;
+}
+form .google img{
+    width: 30px;
+}
+form .google:hover{
+    background: lightseagreen;
+    color: white;
+}

@@ -1,0 +1,14 @@
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(230, 241, 238);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-color{
+    background: rgb(2, 189, 142);
+}
+.navbar{
+    color: white;
+}

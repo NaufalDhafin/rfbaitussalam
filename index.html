@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{NAMA APLIKASI} - {HALAMAN}</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/style/main.css">
+    <link rel="stylesheet" href="assets/style/login.css">
+</head>
+
+<body>
+    <div class="navbar bg-base-100 nav-color">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow nav-color">
+                    <li><a>Item 1</a></li>
+                    <li>
+                        <a>Parent</a>
+                        <ul class="p-2">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a>Item 3</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl">{NAMA APLIKASI}</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 nav-color">
+                <li><a>Item 1</a></li>
+                <li>
+                    <details>
+                        <summary>Parent</summary>
+                        <ul class="p-2 nav-color">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li><a>Item 3</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <!-- <a class="btn">Button</a> -->
+        </div>
+    </div>
+
+    <!-- <form action="">
+        <div class="atas">
+            <img src="assets/img/logo.png" alt="">
+            <p>Masuk Ke {NAMA APLIKASI}</p>
+        </div>
+        <div class="text">
+            <p>Contoh Pesan Gagal</p>
+        </div>
+        <div class="inputs">
+            <label for="">
+                <p>Email / Whatsapp</p>
+                <input type="text" name="input">
+            </label>
+            <label for="">
+                <p>Password</p>
+                <input type="password" name="password">
+            </label>
+            <label for="" id="link">
+                <a href="">Belum Punya Akun? Daftar</a>
+                <a href="">Lupa Password?</a>
+            </label>
+        </div>
+        <button type="submit" name="confirm">Masuk Sekarang</button>
+        <p class="or">Atau</p>
+        <a href="" class="google">
+            <img src="assets/img/google.webp">
+            <p>Masuk Dengan Google</p>
+        </a>
+    </form> -->
+    <form action="">
+        <div class="atas">
+            <img src="assets/img/logo.png" alt="">
+            <p>Daftar Akun {NAMA APLIKASI}</p>
+        </div>
+        <div class="text">
+            <p>Contoh Pesan Gagal</p>
+        </div>
+        <div class="inputs">
+            <label for="">
+                <p>Nama Lengkap</p>
+                <input type="text" name="input" required>
+            </label>
+            <label for="">
+                <p>Whatsapp</p>
+                <input type="number" name="input" required>
+            </label>
+            <label for="">
+                <p>Email</p>
+                <input type="email" name="input" required>
+            </label>
+            <label for="">
+                <p>Nomor KTP</p>
+                <input type="number" name="input" required>
+            </label>
+            <label for="">
+                <p>Password</p>
+                <input type="password" name="password" required>
+            </label>
+            <label for="">
+                <p>Konfirmasi Password</p>
+                <input type="password" name="cpassword" required>
+            </label>
+            <label for="" id="link">
+                <div class="term">
+                    <input type="checkbox" name="term" class="checkbox-success" required checked>
+                    <a href="">Syarat dan Ketentuan</a>
+                </div>
+                <a href="">Sudah Punya Akun? Masuk</a>
+            </label>
+        </div>
+        <button type="submit" name="confirm">Daftar Sekarang</button>
+        <p class="or">Atau</p>
+        <a href="" class="google">
+            <img src="assets/img/google.webp">
+            <p>Daftar Dengan Google</p>
+        </a>
+    </form>
+</body>
+
+</html>
