@@ -1,0 +1,24 @@
+.term{
+    max-width: 800px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.term .judul{
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    color: lightseagreen;
+    font-weight: 600;
+    text-decoration: underline;
+}
+.term .isi{
+    color: rgb(80, 80, 80);
+    font-weight: 450;
+}
