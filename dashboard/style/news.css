@@ -1,0 +1,48 @@
+.news{
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.news .list{
+    width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.news .list img{
+    width: 100%;
+    border-radius: 10px;
+}
+.news .list .sub{
+    font-size: 13px;
+    color: gray;
+    display: flex;
+    gap: 10px;
+}
+.news .list textarea{
+    border: none;
+    font-size: 15px;
+}
+.news .list textarea:focus,
+.news .list textarea:focus-visible,
+.news .list textarea:hover{
+    border: none;
+    outline: none;
+}
+
+@media screen and (max-width:850px){
+    .news{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width:600px){
+    .news{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

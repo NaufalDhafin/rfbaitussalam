@@ -1,0 +1,190 @@
+.box {
+    width: 100%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.box .profile {
+    width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.box .profile .isi {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.box .profile #judul {
+    background: lightseagreen;
+    margin: -10px;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+}
+
+.box .profile label {
+    display: grid;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.233);
+    grid-template-columns: repeat(2,1fr);
+}
+
+.box .profile label #name {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.76);
+}
+
+.box .profile label #isi {
+    font-size: 15px;
+}
+
+.box .tombol {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
+    height: 35px;
+}
+
+.box .tombol a {
+    width: 100%;
+    height: 100%;
+    background: orange;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.riwayat {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.riwayat #jdl {
+    margin-bottom: -60px;
+    background: lightseagreen;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+}
+
+.riwayat table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    background: white;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+tr{
+    border-radius: 10px;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+th {
+    background: lightseagreen;
+    color: white;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid lightseagreen;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+
+    table {
+        width: 100%;
+    }
+
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        /* Label the data */
+        content: attr(data-column);
+
+        color: #000;
+        font-weight: bold;
+    }
+
+}
+
+@media screen and (max-width:800px) {
+    .box {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

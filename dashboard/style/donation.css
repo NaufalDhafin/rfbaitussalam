@@ -1,0 +1,289 @@
+body{
+    background: rgb(241, 241, 241);
+}
+.sedekah{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.sedekah .atas{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    align-items: center;
+    gap: 15px;
+    max-width: 850px;
+}
+.sedekah .atas img{
+    width: 110px;
+}
+.sedekah .atas p{
+    font-size: 20px;
+    font-weight: 500;
+    color: lightseagreen;
+    text-align: center;
+}
+.sedekah form{
+    background: white;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 850px;
+    align-items: center;
+}
+.sedekah form .user{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}
+.sedekah form .user label{
+    width: 100%;
+    color: lightseagreen;
+    font-weight: 500;
+}
+.sedekah form .user label input{
+    width: 100%;
+    height: 40px;
+    background: none;
+    border-radius: 10px;
+    border: 2px solid lightseagreen;
+    color: lightseagreen;
+    padding: 0 5px;
+}
+.sedekah form .user label input:focus,
+.sedekah form .user label input:focus-visible,
+.sedekah form .user label input:hover{
+    border: 2px solid lightseagreen;
+    outline: none;
+}
+.sedekah form .manual{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+.sedekah form .manual #jdl{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: lightseagreen;
+
+}
+.sedekah form .manual .nml{
+    display: flex;
+    color: lightseagreen;
+    border: 2px solid lightseagreen;
+    padding: 5px;
+    border-radius: 10px;
+    align-items: center;
+    gap: 5px;
+    transition: .2s;
+}
+.sedekah form .manual .nml input{
+    border: none;
+    width: 100%;
+    height: 30px;
+    color: lightseagreen;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: none;
+}
+.sedekah form .manual .nml input:focus,
+.sedekah form .manual .nml input:focus-visible,
+.sedekah form .manual .nml input:hover{
+    border: none;
+    outline: none;
+}
+
+.sedekah form .lbl{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.sedekah form .lbl label{
+    background: none;
+    color: lightseagreen;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 2px solid lightseagreen;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+    cursor: pointer;
+}
+.sedekah form .lbl label:hover{
+    background: lightseagreen;
+    color: white;
+}
+.sedekah form .lbl input{
+    display: none;
+}
+
+.sedekah form .lbl input:checked + label{
+    background: lightseagreen;
+    color: white;
+}
+
+.sedekah form .payment{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.432);
+    padding-bottom: 20px;
+    width: 100%;
+}
+.sedekah form .payment #kategori{
+    font-size: 18px;
+    color: lightseagreen;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+.sedekah form .payment .collapse{
+    background: none;
+    border: 2px solid lightseagreen;
+}
+.sedekah form .payment .collapse .collapse-title{
+    color: lightseagreen;
+    font-size: 18px;
+    font-weight: 600;
+}
+.sedekah form .payment .collapse .collapse-content{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 10px;
+}
+.sedekah form .payment .collapse .collapse-content input{
+    display: none;
+}
+.sedekah form .payment .collapse .collapse-content label{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    color: lightseagreen;
+    cursor: pointer;
+    transition: .2s;
+}
+.sedekah form .payment .collapse .collapse-content label:hover{
+    background: lightseagreen;
+    color: white;
+}
+.sedekah form .payment .collapse .collapse-content input:checked + label{
+    background: lightseagreen;
+    color: white;
+}
+.sedekah form .payment .collapse .collapse-content label img{
+    width: 50px;
+}
+.sedekah form .payment .pdetail{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 5px;
+    margin-top: -10px;
+}
+.sedekah form .payment .pdetail input{
+    display: none;
+}
+.sedekah form .payment .pdetail label{
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.527);
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+    transition: .3s;
+}
+.sedekah form .payment .pdetail label:hover{
+    background: lightseagreen;
+    color: white;
+}
+.sedekah form .payment .pdetail label p{
+    font-size: 13px;
+}
+.sedekah form .payment .pdetail label img{
+    width: 80px;
+}
+.sedekah form .payment .pdetail input:checked + label{
+    background: lightseagreen;
+    color: white;
+}
+.sedekah form .pesan{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.sedekah form .pesan #jdl{
+    color: lightseagreen;
+    font-weight: 500;
+    font-size: 18px;
+}
+.sedekah form .pesan textarea{
+    width: 100%;
+    padding: 5px;
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    height: 80px;
+    color: lightseagreen;
+    transition: .2s;
+    font-size: 14px;
+    font-weight: 500;
+    background: none;
+}
+.sedekah form .pesan textarea:hover{
+    border: 2px solid lightseagreen;
+}
+.sedekah form .pesan textarea:focus,
+.sedekah form .pesan textarea:focus-visible,
+.sedekah form .pesan textarea:hover{
+    border: 2px solid lightseagreen;
+    outline: none;
+}
+
+.sedekah form button{
+    height: 40px;
+    background: lightseagreen;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s;
+    width: 90%;
+}
+.sedekah form button:hover{
+    background: rgb(19, 150, 143);
+    width: 100%;
+}
+
+
+@media screen and (max-width:680px) {
+    .sedekah form .lbl{
+        grid-template-columns: repeat(3,1fr);
+        gap: 10px;
+    }
+}
+@media screen and (max-width:550px) {
+    .sedekah form .lbl{
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+    }
+}

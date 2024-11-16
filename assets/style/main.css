@@ -12,3 +12,11 @@ body{
 .navbar{
     color: white;
 }
+.navbar-end .btn{
+    background: white;
+    border: none;
+    color: rgb(2, 189, 142);
+}
+.mn2{
+    width: 200px;
+}

@@ -1,0 +1,68 @@
+.atas{
+    width: 100%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+.atas .kotak{
+    background: rgb(255, 255, 255);
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: end;
+}
+.atas .kotak .a{
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.atas .kotak .a #name{
+    font-size: 13px;
+    color: gray;
+}
+.atas .kotak .a #jumlah{
+    font-size: 23px;
+    margin-top: 6px;
+    font-weight: 500;
+    color: rgb(80, 80, 79);
+}
+.atas .kotak .a img{
+    width: 80px;
+}
+.atas .kotak .b{
+    width: 50%;
+    display: flex;
+}
+.atas .kotak #tkr{
+    background: lightseagreen;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: .2s;
+    height: 35px;
+}
+.atas .kotak #tkr:hover{
+    background: rgb(23, 155, 148);
+}
+
+@media screen and (max-width:800px) {
+    .atas .kotak{
+        flex-direction: column;
+    }
+    .atas .kotak .b{
+        width: 100%;
+    }
+}
+@media screen and (max-width:600px) {
+    .atas {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
