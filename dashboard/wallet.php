@@ -86,7 +86,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tipe</th>
+                        <th>Tipes</th>
                         <th>Keterangan</th>
                         <th>Jumlah Token</th>
                         <th>Tanggal</th>
