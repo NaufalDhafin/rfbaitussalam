@@ -156,7 +156,7 @@
                     $password   = md5($_POST['password']);
                     $cpassword  = md5($_POST['cpassword']);
                     if($password == $cpassword){
-                        $conf->query("INSERT INTO users SET userid = '$create_userid', fullname = '$fullname', ktp = '$ktp', whatsapp = '$whatsapp', email = '$email', password = '$cpassword', levels = 'member', otp = ''");
+                        $conf->query("INSERT INTO users SET userid = '$create_userid', fullname = '$fullname', ktp = '$ktp', whatsapp = '$whatsapp', email = '$email', password = '$cpassword', levels = 'member', otp = '', verification = 'yes'");
                         echo "<meta http-equiv='refresh' content='0;dashboard/'>";
                     }
                     else{
@@ -165,11 +165,17 @@
                 }
             }
             elseif($act == "forgot"){
+                if(isset($_GET['change'])){
+                    $text = "Ganti Password";
+                }
+                else{
+                    $text = "Lupa Password";
+                }
         ?>
     <form action="" method="post">
         <div class="atas">
             <img src="assets/img/logo.png" alt="">
-            <p>Lupa Password</p>
+            <p><?= $text ?></p>
         </div>
         <?= $alert ?>
         <div class="inputs">
@@ -203,9 +209,9 @@
                           CURLOPT_POSTFIELDS => array(
                         'target' => "$whatsapp",
                         'message' => "JANGAN BERITAHU SIAPA PUN! 
-                        Jika bukan anda yang melakukan maka hiraukanlah.
-                        
-                        kode OTP: $otp"
+Jika bukan anda yang melakukan maka hiraukanlah.
+
+kode OTP: $otp"
                         ),
                           CURLOPT_HTTPHEADER => array(
                             'Authorization: Lz#NVM@nC2_P1!wNCyhZ'
@@ -305,7 +311,6 @@
             $cekuser = $conf->query("SELECT * FROM users WHERE email = '$input' OR whatsapp = '$input' AND password = '$password'");
             if($cekuser->num_rows > 0){
                 $rows = $cekuser->fetch_array();
-                session_start();
                 $_SESSION['userid'] = $rows['userid'];
                 echo "<meta http-equiv='refresh' content='0;dashboard/'>";
             }

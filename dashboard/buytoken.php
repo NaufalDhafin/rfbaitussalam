@@ -60,17 +60,30 @@
                 <div class="paywith">
                     <p id="jdl">Pilih Pembayaran</p>
                     <div class="list">
-                        <input type="radio" name="paywith" value="" id="1">
-                        <label for="1">
-                            <img src="../assets/img/rupiah.png" alt="">
-                            <p>Nama Bank</p>
+                    <?php
+                        $apiKey = 'DEV-WeLRMjIYnGObKXjG2Nnc3W87DToLQsbjDyrPxOGZ';
+                        $channel_curl = curl_init();
+                        curl_setopt_array($channel_curl, array(
+                          CURLOPT_FRESH_CONNECT  => true,
+                          CURLOPT_URL            => 'https://tripay.co.id/api-sandbox/merchant/payment-channel',
+                          CURLOPT_RETURNTRANSFER => true,
+                          CURLOPT_HEADER         => false,
+                          CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
+                          CURLOPT_FAILONERROR    => false,
+                          CURLOPT_IPRESOLVE      => CURL_IPRESOLVE_V4
+                        ));
+                        $channel_response = curl_exec($channel_curl);
+                        $channel_json = json_decode($channel_response, true);
+                        foreach($channel_json['data'] as $data){
+                    ?>
+                        <input type="radio" name="paywith" value="<?= $data['code']?>" id="<?= $data['code']?>">
+                        <label style="min-height:70px;" for="<?= $data['code']?>">
+                            <img style="width:70px;" src="<?= $data['icon_url']?>" alt="<?= $data['icon_url']?>">
+                            <p style="font-weight:600;"><?= $data['name']?></p>
                         </label>
-                        
-                        <input type="radio" name="paywith" value="" id="2">
-                        <label for="2">
-                            <img src="../assets/img/rupiah.png" alt="">
-                            <p>Nama Bank</p>
-                        </label>
+                    <?php
+                        }
+                    ?>
                     </div>
                 </div>
                 <button type="submit" name="confirm" id="buy">Beli Token</button>
@@ -78,15 +91,33 @@
             <?php 
                 if(isset($_POST['confirm'])){
                     $amount     = (float)$_POST['amount'];
+                    $payconvert = $amount * $rpPerToken;
                     $paywith    = $_POST['paywith'];
-                    $trx_coin   = $conf->query("INSERT INTO trx_coin SET trxid = '$create_trxid_coin', userid = '$sesiUser', note = 'Beli', type = 'beli', amount = '$amount', status = 'success'");
-                    if($trx_coin){
-                        $newtoken = $rremainCoin['used'] + $amount;
-                        $remainingToken = (float)$rremainCoin['remaining'] - $amount;
-                        $tuser = $rusers['coin'] + $amount;
-                        $conf->query("UPDATE users SET coin = '$tuser' WHERE userid = '$sesiUser'");
-                        $conf->query("UPDATE coin SET used = '$newtoken', remaining = '$remainingToken'");
-                        echo '<meta http-equiv="refresh" content="0;wallet.php">';
+                    $nama       = $rusers['fullname'];
+                    $whatsapp   = $rusers['whatsapp'];
+                    include "../app/payment/create.php";
+                    
+                    $trx  = createTransaction('DEV-WeLRMjIYnGObKXjG2Nnc3W87DToLQsbjDyrPxOGZ', 'GeuCO-VjKFL-DI62F-kqxXJ-VQ8dM', 'T24688', $paywith, $create_trxid_coin,$payconvert, $nama, $create_trxid_coin.'@rfbaitussalam.com', $whatsapp, "Membeli Token $amount");
+                    $json = json_decode($trx, true);
+
+                    if($json['success'] == true){
+                        $checkout_url = $json['data']['checkout_url'];
+                        $trx_coin   = $conf->query("INSERT INTO trx_coin SET trxid = '$create_trxid_coin', userid = '$sesiUser', note = 'Beli', type = 'beli', amount = '$amount', status = 'success'");
+                        if($trx_coin){
+                            $newtoken = $rremainCoin['used'] + $amount;
+                            $remainingToken = (float)$rremainCoin['remaining'] - $amount;
+                            $tuser = $rusers['coin'] + $amount;
+                            $conf->query("UPDATE users SET coin = '$tuser' WHERE userid = '$sesiUser'");
+                            $conf->query("UPDATE coin SET used = '$newtoken', remaining = '$remainingToken'");
+                            echo "<meta http-equiv='refresh' content='0;$checkout_url'>";
+                        }
+                        else{
+                            echo "<meta http-equiv='refresh' content='0;wallet.php?error=insertdatabase'>";
+                        }
+                    }
+                    else{
+                        $err = $json['message'];
+                        echo "<meta http-equiv='refresh' content='0;wallet.php?error=$err'>";
                     }
                 }
             ?>

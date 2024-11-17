@@ -19,7 +19,7 @@
                 $fullname = $data['given_name']." ".$data['family_name'];
                 $email    = $data['email'];
                 $password = $data['password'];
-                $conf->query("INSERT INTO users SET userid = '$create_userid', fullname = '$fullname', ktp = '', whatsapp = '', email = '$email', password = '', levels = 'member', otp = ''");
+                $conf->query("INSERT INTO users SET userid = '$create_userid', fullname = '$fullname', ktp = '', whatsapp = '', email = '$email', coin = '0', password = '', otp = ''");
                 echo "<meta http-equiv='refresh' content='0;../login.php?act=continue&userid=$create_userid'>";
             }
         }
