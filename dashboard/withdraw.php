@@ -40,80 +40,7 @@ else{
 </head>
 
 <body>
-    <div class="sidebar close">
-        <div class="logo-details">
-            <i class='bx bxs-brightness-half'></i>
-            <span class="logo_name"></span>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="index.php">
-                    <i class='bx bxs-home'></i>
-                    <span class="link_name">Beranda</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="index.php">Beranda</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="donation.php">
-                    <i class='bx bx-money-withdraw'></i>
-                    <span class="link_name">Sedekah</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="donation.php">Sedekah</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="wallet.php">
-                    <i class='bx bxs-wallet'></i>
-                    <span class="link_name">Dompet</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="wallet.php">Dompet</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="news.php">
-                    <i class='bx bx-history'></i>
-                    <span class="link_name">Berita</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="news.php">Berita</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="profile.php">
-                    <i class='bx bxs-id-card'></i>
-                    <span class="link_name">Profile</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="profile.php">Profile</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="../assets/img/profile.png" alt="profileImg">
-                    </div>
-                    <div href="?act=logout" class="name-job">
-                        <div class="profile_name">Logout</div>
-                        <i class='bx bx-log-out'></i>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <section class="home-section">
-            <div class="home-content">
-                <div class="bxm">
-                    <i class='bx bx-menu'></i>
-                </div>
-                <div class="prop">
-                    <img src="../assets/img/prop.png">
-                    <p>1 PROP = Rp 95.000</p>
-                </div>
-            </div>
+<?php include "../assets/sidebar.php" ?>
             <?php 
                 if(isset($_GET['alert'])){
             ?>
@@ -173,7 +100,7 @@ else{
                         </div>
                     </label>
                     <label for="">
-                        <p>Jumlah Token <span style="font-size:13px;">(minimal 20 token)</span></p>
+                        <p>Jumlah <span style="font-size:13px;">(minimal 10.000)</span></p>
                         <div>
                             Token<input type="text" name="amount">
                         </div>
@@ -184,8 +111,8 @@ else{
             <?php
                 }
             if(isset($_POST['confirm'])){
-                $amount     = (float)$_POST['amount'];
-                if($amount <= 2.4){
+                $amount     = $_POST['amount'] / $rpPerToken;
+                if($amount <= 10000){
                     echo '<meta http-equiv="refresh" content="0;?alert">';
                 }
                 else{
