@@ -102,7 +102,7 @@ else{
                     <label for="">
                         <p>Jumlah <span style="font-size:13px;">(minimal 10.000)</span></p>
                         <div>
-                            Token<input type="text" name="amount">
+                            Rp<input type="text" name="amount" id="convert-rp">
                         </div>
                     </label>
                     <button type="submit" name="confirm">Tarik Sekarang</button>
@@ -111,13 +111,14 @@ else{
             <?php
                 }
             if(isset($_POST['confirm'])){
-                $amount     = $_POST['amount'] / $rpPerToken;
-                if($amount <= 10000){
+                $titik = (int)str_replace(".","",$_POST['amount']);
+                $amount     = $titik / $rpPerToken;
+                if($titik <= 10000){
                     echo '<meta http-equiv="refresh" content="0;?alert">';
                 }
                 else{
                     $kurangi    = $rusers['coin'] - $amount;
-                    $trx_coin   = $conf->query("INSERT INTO trx_coin SET trxid = '$create_trxid_coin', userid = '$sesiUser', note = 'Jual', type = 'jual', amount = '$amount', status = 'success'");
+                    $trx_coin   = $conf->query("INSERT INTO trx_coin SET trxid = '$create_trxid_coin', userid = '$sesiUser', note = 'Jual', type = 'jual', amount = '$kurangi', status = 'menunggu'");
                     $update     = $conf->query("UPDATE users SET coin = '$kurangi' WHERE userid = '$sesiUser'");
                     $uprecoin   = $rremainCoin['remaining'] + $amount;
                     $conf->query("UPDATE coin SET used = '$kurangi', remaining = '$uprecoin'");

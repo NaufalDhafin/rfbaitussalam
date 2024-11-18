@@ -11,7 +11,7 @@
     $create_trxid_sedekah   = "SDK".random_int(11,99).date("dmyHis");
 
     function rp($angka){
-        $hasil_rupiah   = "Rp " . number_format($angka,0,',','.');
+        $hasil_rupiah   = "Rp " . number_format($angka,2,',','.');
         return $hasil_rupiah;
     }
     $appname = "RF Baitussalam";

@@ -55,21 +55,6 @@
                         <p id="name">Email : </p>
                         <p id="isi"><?= $rusers['email'] ?></p>
                     </label>
-                    <label for="">
-                        <p id="name">Verifikasi : </p>
-                        <?php 
-                            if($rusers['verification'] == "yes"){
-                        ?>
-                        <p id="isi">Terverifikasi</p>
-                        <?php     
-                            }
-                            else{
-                        ?>
-                        <a href="" id="isi">Belum Terverifikasi</a>
-                        <?php
-                            }
-                        ?>
-                    </label>
                 </div>
                 <div class="tombol">
                     <a href="">Ubah Data</a>
@@ -122,7 +107,16 @@
                     
                 </div>
                 <div class="tombol">
-                    <a href="">Tambah Rekening</a>
+                    <?php 
+                        $cekrekening = $conf->query("SELECT * FROM rekening WHERE userid = '$sesiUser'");
+                        if($cekrekening->num_rows > 0){
+                            echo '<a href="edit-profile.php">Update Rekening</a>';
+                        }
+                        else{
+                            echo '<a href="rekening.php">Tambah Rekeningg</a>';
+                        }
+                    ?>
+                    
                 </div>
             </div>
         </div>
@@ -133,20 +127,22 @@
                     <tr>
                         <th>ID</th>
                         <th>Tujuan</th>
-                        <th>Jumlah</th>
+                        <th>Jumlah Token</th>
+                        <th>Rupiah</th>
                         <th>Tanggal</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
-                $withdraw = $conf->query("SELECT * FROM withdraw WHERE userid = '$sesiUser'");
+                $withdraw = $conf->query("SELECT * FROM trx_coin WHERE userid = '$sesiUser' AND type = 'jual'");
                 if($withdraw->num_rows < 1){
                 ?>
                     <tr>
                         <td data-column="ID">-</td>
                         <td data-column="Tujuan">-</td>
-                        <td data-column="Jumlah">-</td>
+                        <td data-column="Token">-</td>
+                        <td data-column="Rupiah">-</td>
                         <td data-column="Tanggal">-</td>
                         <td data-column="Status">-</td>
                     </tr>
@@ -156,9 +152,10 @@
                 while($rows = $withdraw->fetch_array()){
                 ?>
                     <tr>
-                        <td data-column="ID"><?= $rows['id'] ?></td>
+                        <td data-column="ID"><?= $rows['trxid'] ?></td>
                         <td data-column="Tujuan"><?= $rbanks['bankname']." ".$rbanks['rekening']." ".$rbanks['fullname']?></td>
-                        <td data-column="Jumlah"><?= rp($rows['amount']) ?></td>
+                        <td data-column="Token"><?= $rows['amount'] ?></td>
+                        <td data-column="Rupiah"><?= rp($rows['amount'] * $rpPerToken)  ?></td>
                         <td data-column="Tanggal"><?= $rows['date'] ?></td>
                         <td data-column="Status"><?= $rows['status'] ?></td>
                     </tr>
